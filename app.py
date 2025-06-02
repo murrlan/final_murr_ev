@@ -1,3 +1,4 @@
+#creds: PKWD2W7UZTO2M373D9F2, OHA9MvWVI60aeAWbTocIKpfAB0IhKN7qlr9fhz5C
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest
