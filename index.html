@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Shorting System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Shorting Algorithm</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/start" method="post">
+            <div class="form-group">
+                <label for="api_key">Alpaca API Key:</label>
+                <input type="text" id="api_key" name="api_key" value="{{ session.get('api_key', '') }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="api_secret">Alpaca Secret Key:</label>
+                <input type="password" id="api_secret" name="api_secret" value="{{ session.get('api_secret', '') }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="min_cap">Minimum Market Cap ($):</label>
+                <input type="number" id="min_cap" name="min_cap" value="{{ session.get('min_cap', '2000000000') }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="max_attempts">Max Attempts:</label>
+                <input type="number" id="max_attempts" name="max_attempts" value="{{ session.get('max_attempts', '5') }}" required>
+            </div>
+
+            <button type="submit">Start Trading</button>
+        </form>
+
+        {% if session.get('api_key') %}
+            <div class="continue-section">
+                <p>Your API credentials are saved</p>
+                <a href="{{ url_for('continue_trading') }}" class="btn-continue">Continue Trading</a>
+            </div>
+        {% endif %}
+
+        <div class="links">
+            <a href="{{ url_for('history') }}">View Trade History</a>
+        </div>
+    </div>
+</body>
+</html>
 
