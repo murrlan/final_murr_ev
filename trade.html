@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Trade</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Confirm Short Trade</h1>
+        <p>Attempt {{ attempts }} of {{ max_attempts }}</p>
+
+        <!-- Display trade error if exists -->
+        {% if trade_error %}
+            <div class="alert alert-danger">
+                {{ trade_error }}
+            </div>
+        {% endif %}
+
+        <div class="stock-info">
+            <h2>{{ symbol }}</h2>
+            <p>Price: ${{ price }}</p>
+            <p>Market Cap: {{ market_cap }}</p>
+        </div>
+
+        <form action="/execute_trade" method="post">
+            <div class="form-group">
+                <label for="qty">Shares to Short:</label>
+                <input type="number" id="qty" name="qty" min="1" step="1" required>
+            </div>
+
+            <div class="button-group">
+                <button type="submit">Confirm Short</button>
+                <a href="{{ url_for('skip_trade') }}" class="btn-cancel">Skip</a>
+            </div>
+        </form>
+
+        <div class="continue-section">
+            <a href="{{ url_for('index') }}" class="btn-home">Return to Home</a>
+        </div>
+    </div>
+</body>
+</html>
