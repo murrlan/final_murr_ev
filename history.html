@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trade History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Trade History</h1>
+
+        {% if trades %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Symbol</th>
+                        <th>Quantity</th>
+                        <th>Side</th>
+                        <th>Time</th>
+                        <th>Price</th>
+                        <th>Market Cap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for trade in trades %}
+                        <tr>
+                            <td>{{ trade[0] }}</td>
+                            <td>{{ trade[1] }}</td>
+                            <td>{{ trade[2] }}</td>
+                            <td>{{ trade[3] }}</td>
+                            <td>{{ trade[4] }}</td>
+                            <td>${{ trade[5] }}</td>
+                            <td>{{ trade[6] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No trades recorded yet.</p>
+        {% endif %}
+
+        <div class="links">
+            <a href="{{ url_for('index') }}">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
