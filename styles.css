@@ -59,6 +59,10 @@ button {
 
 button:hover {
     background-color: #2980b9;
+
+}
+button:active, button:focus {
+    background-color: #27ae60;
 }
 
 .links {
@@ -183,4 +187,3 @@ tr:hover {
     background-color: #6c7a7d;
     text-decoration: none;
 }
-
