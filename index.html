@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stock Shorting System</title>
+    <title>Stock Shorting</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Stock Shorting Algorithm</h1>
+        <h1>Stock Shorting</h1>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -38,7 +38,7 @@
                 <input type="number" id="max_attempts" name="max_attempts" value="{{ session.get('max_attempts', '5') }}" required>
             </div>
 
-            <button type="submit">Start Trading</button>
+            <button type="submit" class="changecolor">Start Trading</button>
         </form>
 
         {% if session.get('api_key') %}
@@ -54,4 +54,3 @@
     </div>
 </body>
 </html>
-
