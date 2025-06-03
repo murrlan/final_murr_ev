@@ -148,9 +148,9 @@ tr:hover {
     background-color: #f8f9fa;
 }
 
-.btn-continue {
+.btncontinue {
     display: inline-block;
-    background-color: #27ae60;
+    background-color: grey;
     color: white;
     padding: 12px 20px;
     text-decoration: none;
@@ -158,9 +158,12 @@ tr:hover {
     margin-top: 10px;
 }
 
-.btn-continue:hover {
+.btncontinue:hover {
     background-color: #219653;
     text-decoration: none;
+}
+.btncontinue:active, .btncontinue:focus {
+    background-color: green;
 }
 
 .btn-home {
@@ -175,4 +178,7 @@ tr:hover {
 .btn-home:hover {
     background-color: #6c7a7d;
     text-decoration: none;
+}
+.btn-home:active, .btn-home:focus {
+    background-color: green;
 }
