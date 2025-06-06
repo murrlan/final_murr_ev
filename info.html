@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Information</h1>
+        <p>stock shorting algorithm using alpaca api paper (fake money) trading</p>
+        <p>this program automatically identifies and shorts top-gaining stocks that meet specific criteria: </p>
+        <ul>
+            <li>1. scrapes daily top gainers from yahoo finance</li>
+            <li>2. checks for merger/acquisition/ipo news using google news</li>
+            <li>3. verifies tradability through alpaca api</li>
+            <li>4. filters stocks based on user entered market capitalization</li>
+            <li>5. executes short orders with user confirmation through alpaca api</li>
+            <li>6. maintains a database of all trades</li>
+            <p>for future use this program can be used with real money trading, as alpaca allows you to link
+            a broker and interact with it through their api</p>
+        </ul>
+    </div>
+    <div class="continue-section">
+        <a href="{{ url_for('index') }}" class="btn-home">Return to Home</a>
+    </div>
+</body>
+</html>
