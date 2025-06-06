@@ -1,4 +1,4 @@
-#creds: PKWD2W7UZTO2M373D9F2, OHA9MvWVI60aeAWbTocIKpfAB0IhKN7qlr9fhz5C
+#copy comments from other python file
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest
@@ -15,7 +15,7 @@ import os
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-# Database initialization
+#initialize the database
 def startdb():
     conn = sqlite3.connect('trade_history.db')
     conn.cursor().execute('''
@@ -127,7 +127,6 @@ def submit_order(symbol, qty, trading_client, market_cap):
             return False, f"Order failed: {str(e)[:100]}"
     return False, f"{symbol} is not tradable"
 
-# Initialize database
 startdb()
 
 @app.route('/')
@@ -280,6 +279,9 @@ def history():
     trades = get_trade_history()
     return render_template('history.html', trades=trades)
 
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
-
